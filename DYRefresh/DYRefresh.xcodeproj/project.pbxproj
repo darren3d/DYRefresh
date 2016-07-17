@@ -14,6 +14,8 @@
 		636E9AAF1D3BE36B00285FA1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 636E9AAD1D3BE36B00285FA1 /* LaunchScreen.storyboard */; };
 		636E9ABA1D3BE36B00285FA1 /* DYRefreshTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636E9AB91D3BE36B00285FA1 /* DYRefreshTests.swift */; };
 		636E9AC51D3BE36B00285FA1 /* DYRefreshUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636E9AC41D3BE36B00285FA1 /* DYRefreshUITests.swift */; };
+		636E9AD41D3BEDED00285FA1 /* DYRefreshComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636E9AD31D3BEDED00285FA1 /* DYRefreshComponent.swift */; };
+		636E9AD61D3C02D200285FA1 /* DYRefreshHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636E9AD51D3C02D200285FA1 /* DYRefreshHeader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +49,8 @@
 		636E9AC01D3BE36B00285FA1 /* DYRefreshUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DYRefreshUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		636E9AC41D3BE36B00285FA1 /* DYRefreshUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DYRefreshUITests.swift; sourceTree = "<group>"; };
 		636E9AC61D3BE36B00285FA1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		636E9AD31D3BEDED00285FA1 /* DYRefreshComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DYRefreshComponent.swift; sourceTree = "<group>"; };
+		636E9AD51D3C02D200285FA1 /* DYRefreshHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DYRefreshHeader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +133,8 @@
 		636E9AD21D3BE7AA00285FA1 /* DYRefresh */ = {
 			isa = PBXGroup;
 			children = (
+				636E9AD31D3BEDED00285FA1 /* DYRefreshComponent.swift */,
+				636E9AD51D3C02D200285FA1 /* DYRefreshHeader.swift */,
 			);
 			path = DYRefresh;
 			sourceTree = "<group>";
@@ -265,6 +271,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				636E9AA71D3BE36B00285FA1 /* ViewController.swift in Sources */,
+				636E9AD61D3C02D200285FA1 /* DYRefreshHeader.swift in Sources */,
+				636E9AD41D3BEDED00285FA1 /* DYRefreshComponent.swift in Sources */,
 				636E9AA51D3BE36B00285FA1 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
