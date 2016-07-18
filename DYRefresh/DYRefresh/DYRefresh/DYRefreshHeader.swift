@@ -12,10 +12,9 @@ class DYRefreshHeader: DYRefreshComponent {
     var ignoredInsetTop : CGFloat = 0;
     private var insetTopDelta : CGFloat = 0
     override var state: DYRefreshState {
-        set {
-            let newState = newValue
-            let oldState = super.state
-            super.state = newValue
+        didSet {
+            let newState = state
+            let oldState = oldValue
             
             if newState == DYRefreshState.Idle {
                 if oldState != DYRefreshState.Refreshing {
@@ -40,13 +39,13 @@ class DYRefreshHeader: DYRefreshComponent {
                                 scrollView.setContentOffset(CGPointMake(0, -top), animated: false)
                             }
                         }, completion: { finished in
-                            self.pullingPercent = 0.0;
+                            guard let refreshingBlock = self.refreshingBlock else {
+                                return
+                            }
+                            refreshingBlock()
                     })
                 }
             }
-        }
-        get {
-            return super.state
         }
     }
     

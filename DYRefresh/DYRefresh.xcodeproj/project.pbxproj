@@ -16,6 +16,7 @@
 		636E9AC51D3BE36B00285FA1 /* DYRefreshUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636E9AC41D3BE36B00285FA1 /* DYRefreshUITests.swift */; };
 		636E9AD41D3BEDED00285FA1 /* DYRefreshComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636E9AD31D3BEDED00285FA1 /* DYRefreshComponent.swift */; };
 		636E9AD61D3C02D200285FA1 /* DYRefreshHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636E9AD51D3C02D200285FA1 /* DYRefreshHeader.swift */; };
+		636E9AD81D3D1FB500285FA1 /* UIViewController+DYRefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636E9AD71D3D1FB500285FA1 /* UIViewController+DYRefresh.swift */; };
 		84FE8B881D3C8FC40068691D /* DYRefreshFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FE8B871D3C8FC40068691D /* DYRefreshFooter.swift */; };
 		84FE8B8A1D3C94310068691D /* UIScrollView+DYRefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FE8B891D3C94310068691D /* UIScrollView+DYRefresh.swift */; };
 /* End PBXBuildFile section */
@@ -53,6 +54,7 @@
 		636E9AC61D3BE36B00285FA1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		636E9AD31D3BEDED00285FA1 /* DYRefreshComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DYRefreshComponent.swift; sourceTree = "<group>"; };
 		636E9AD51D3C02D200285FA1 /* DYRefreshHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DYRefreshHeader.swift; sourceTree = "<group>"; };
+		636E9AD71D3D1FB500285FA1 /* UIViewController+DYRefresh.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+DYRefresh.swift"; sourceTree = "<group>"; };
 		84FE8B871D3C8FC40068691D /* DYRefreshFooter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DYRefreshFooter.swift; sourceTree = "<group>"; };
 		84FE8B891D3C94310068691D /* UIScrollView+DYRefresh.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIScrollView+DYRefresh.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -141,6 +143,7 @@
 				636E9AD51D3C02D200285FA1 /* DYRefreshHeader.swift */,
 				84FE8B871D3C8FC40068691D /* DYRefreshFooter.swift */,
 				84FE8B891D3C94310068691D /* UIScrollView+DYRefresh.swift */,
+				636E9AD71D3D1FB500285FA1 /* UIViewController+DYRefresh.swift */,
 			);
 			path = DYRefresh;
 			sourceTree = "<group>";
@@ -278,6 +281,7 @@
 			files = (
 				636E9AA71D3BE36B00285FA1 /* ViewController.swift in Sources */,
 				636E9AD61D3C02D200285FA1 /* DYRefreshHeader.swift in Sources */,
+				636E9AD81D3D1FB500285FA1 /* UIViewController+DYRefresh.swift in Sources */,
 				84FE8B8A1D3C94310068691D /* UIScrollView+DYRefresh.swift in Sources */,
 				84FE8B881D3C8FC40068691D /* DYRefreshFooter.swift in Sources */,
 				636E9AD41D3BEDED00285FA1 /* DYRefreshComponent.swift in Sources */,

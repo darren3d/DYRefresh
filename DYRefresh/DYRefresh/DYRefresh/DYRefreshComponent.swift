@@ -51,7 +51,7 @@ class DYRefreshComponent: UIView {
                 return
             }
             dispatch_async(dispatch_get_main_queue()) { 
-                self.setNeedsLayout()
+                self.setNeedsDisplay()
             }
         }
     }
@@ -179,8 +179,9 @@ class DYRefreshComponent: UIView {
             self.state = DYRefreshState.Refreshing
         } else {
             if (self.state != DYRefreshState.Refreshing) {
-                self.state = DYRefreshState.WillRefresh;
-                self.setNeedsLayout();
+                self.state = DYRefreshState.Refreshing;
+                self.setNeedsLayout()
+                self.setNeedsDisplay()
             }
         }
     }

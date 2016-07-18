@@ -15,17 +15,25 @@ class ViewController: UITableViewController {
         super.viewDidLoad()
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
         self.tableView.registerClass(UITableViewCell.self,  forCellReuseIdentifier:"cell")
+        
+        dy_setupRefresh(true, setFooter: true, scrollView: self.tableView)
     }
     
     override func viewDidAppear(animated: Bool) {
-        
+        self.tableView.dy_header?.beginRefreshing()
     }
     
-    func updataData() {
+    override func dy_updateData() {
+        var data = [String]()
+        for i in 0 ..< 20 {
+            data.append("row: \(i)")
+        }
         
+        self.data = data
+        self.tableView.reloadData()
     }
     
-    func loadMoreData(){
+    override func dy_loadMoreData() {
         
     }
     

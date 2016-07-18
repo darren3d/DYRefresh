@@ -46,6 +46,12 @@ class DYRefreshFooter: DYRefreshComponent {
         }
     }
     
+    class func footer(frame:CGRect, block:DYRefreshComponentBlock? = nil) -> DYRefreshFooter {
+        let footer = DYRefreshFooter(frame: frame)
+        footer.refreshingBlock = block
+        return footer
+    }
+    
     override func willMoveToSuperview(newSuperview: UIView?) {
         let oldScrollView = self.scrollView
         super.willMoveToSuperview(newSuperview)
