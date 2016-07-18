@@ -11,10 +11,9 @@ import UIKit
 class DYRefreshFooter: DYRefreshComponent {
     var triggerRefreshPercent : CGFloat = 1.0
     override var state: DYRefreshState {
-        set {
-            let newState = newValue
-            let oldState = super.state
-            super.state = newValue
+        didSet {
+            let newState = state
+            let oldState = oldValue
             
             if newState == DYRefreshState.Refreshing {
                 dispatch_async(dispatch_get_main_queue()){
@@ -26,18 +25,24 @@ class DYRefreshFooter: DYRefreshComponent {
                 }
             }
         }
-        get {
-            return super.state
-        }
     }
     
     override var hidden: Bool {
-        set {
+        didSet {
+            let newHidden = hidden
+            let oldHidden = oldValue
             
-        }
-        
-        get {
-            return super.hidden
+            guard let scrollView = self.scrollView else {
+                return
+            }
+            
+            if !oldHidden && newHidden {
+                self.state = DYRefreshState.Idle;
+                scrollView.contentInset.bottom -= self.frame.size.height;
+            } else if (oldHidden && !newHidden) {
+                scrollView.contentInset.bottom += self.frame.size.height;
+                self.frame.origin.y = scrollView.contentSize.height;
+            }
         }
     }
     
