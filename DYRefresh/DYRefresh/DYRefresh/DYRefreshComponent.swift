@@ -86,6 +86,16 @@ class DYRefreshComponent: UIView {
         }
     }
     
+    override func willMoveToSuperview(newSuperview: UIView?) {
+        super.willMoveToSuperview(newSuperview)
+        let scrollView = newSuperview as? UIScrollView
+        self.scrollView = scrollView
+        if newSuperview != nil {
+            self.frame.size.width = newSuperview!.frame.size.width
+            self.frame.origin.x = 0
+        }
+    }
+    
     //MARK: KVO监听
     func addKVOObservers() {
         guard let scrollView = self.scrollView else {
