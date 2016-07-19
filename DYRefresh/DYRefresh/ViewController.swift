@@ -16,7 +16,7 @@ class ViewController: UITableViewController {
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
         self.tableView.registerClass(UITableViewCell.self,  forCellReuseIdentifier:"cell")
         
-        dy_setupRefresh(true, setFooter: true, scrollView: self.tableView)
+        dy_setupRefresh(true, setFooter: false, scrollView: self.tableView)
     }
     
     override func viewDidAppear(animated: Bool) {

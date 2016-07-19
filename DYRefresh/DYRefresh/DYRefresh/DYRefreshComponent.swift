@@ -45,7 +45,7 @@ class DYRefreshComponent: UIView {
     
     var scrollViewOriginalInset : UIEdgeInsets = UIEdgeInsetsZero
     
-    var state : DYRefreshState = DYRefreshState.Init {
+    var state : DYRefreshState = DYRefreshState.Idle {
         didSet {
             if oldValue == state {
                 return
@@ -149,7 +149,7 @@ class DYRefreshComponent: UIView {
         
         if keyPath == "contentOffset" {
             scrollViewContentOffsetDidChange(change)
-        } else if keyPath == "statie" {
+        } else if keyPath == "state" {
             scrollViewPanStateDidChange(change)
         }
     }
