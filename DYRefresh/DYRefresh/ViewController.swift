@@ -26,7 +26,7 @@ class ViewController: UITableViewController {
     
     override func dy_updateData() {
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (Int64)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), { () -> Void in
-            var data = [String]()
+            var data = self.data
             for i in 0 ..< 20 {
                 data.append("row: \(i)")
             }
