@@ -79,7 +79,7 @@ class DYRefreshHeader: DYRefreshComponent {
             insetTop = insetTop > self.frame.size.height + scrollViewOriginalInset.top ?
                 self.frame.size.height + scrollViewOriginalInset.top  : insetTop;
             scrollView.contentInset.top = insetTop
-            self.insetTopDelta = insetTop
+            self.insetTopDelta = scrollViewOriginalInset.top - insetTop
             return
         }
         

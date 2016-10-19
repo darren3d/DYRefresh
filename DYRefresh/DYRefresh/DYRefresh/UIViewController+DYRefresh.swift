@@ -40,4 +40,12 @@ extension UIViewController {
     
     func dy_loadMoreData() {
     }
+    
+    func dy_endRefreshUpdate() {
+        
+    }
+    
+    func dy_endRefreshLoadMore() {
+        
+    }
 }

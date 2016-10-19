@@ -20,17 +20,22 @@ class ViewController: UITableViewController {
     }
     
     override func viewDidAppear(animated: Bool) {
-        self.tableView.dy_header?.beginRefreshing()
+//        self.tableView.dy_header?.beginRefreshing()
+        dy_updateData()
     }
     
     override func dy_updateData() {
-        var data = [String]()
-        for i in 0 ..< 20 {
-            data.append("row: \(i)")
-        }
-        
-        self.data = data
-        self.tableView.reloadData()
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (Int64)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), { () -> Void in
+            var data = [String]()
+            for i in 0 ..< 20 {
+                data.append("row: \(i)")
+            }
+            
+            self.data = data
+            self.tableView.reloadData()
+            
+            self.tableView.dy_header?.endRefreshing()
+        })
     }
     
     override func dy_loadMoreData() {
