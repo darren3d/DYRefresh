@@ -98,7 +98,7 @@ class DYRefreshComponent: UIView {
     
     //MARK: KVO监听
     func addKVOObservers() {
-        guard let scrollView = self.scrollView as? UIScrollView else {
+        guard let scrollView = self.scrollView else {
             return
         }
         
@@ -120,7 +120,7 @@ class DYRefreshComponent: UIView {
     }
     
     func removeKVOObservers() {
-        guard let scrollView = self.scrollView as? UIScrollView else {
+        guard let scrollView = self.scrollView else {
             return
         }
         
