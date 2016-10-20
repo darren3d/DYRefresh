@@ -10,15 +10,14 @@ import UIKit
 
 class DYBallView: UIView {
     var moveUpDuration: Double = 0.7
-    var moveUpDist: CGFloat = 32 * 1.5
     var circleSize: CGFloat = 20
     var circleSpace: CGFloat = 8.0
     var circleColor = UIColor.lightGrayColor()
+    private var circleLayers : [CircleLayer] = []
     
     
-    private var didStarUpAnimation: (()->())?
-    private var circleMoveView: CircleMoveView?
-    private var endFloatAnimation: (()->())?
+    private var didStarUpAnimation: (()->())!
+    private var endFloatAnimation: (()->())!
     
     override init(frame: CGRect) {
         super.init(frame:frame)
@@ -31,10 +30,21 @@ class DYBallView: UIView {
     }
     
     func setupView() {
+        for layer in circleLayers {
+            layer.removeFromSuperlayer()
+        }
+        circleLayers.removeAll()
+        
         for i in 3.stride(through: 0, by: -1) {
-            circleMoveView = CircleMoveView.init(frame: frame, circleSize: circleSize, moveUpDist: moveUpDist, color: circleColor)
-            circleMoveView!.tag = 100 + i
-            self.addSubview(circleMoveView!)
+            let circleLayer = CircleLayer(
+                size: circleSize,
+                moveUpDist: self.bounds.size.height*0.5,
+                superViewFrame: frame,
+                color: circleColor
+            )
+            circleLayer.layerTag = i
+            circleLayers.append(circleLayer)
+            self.layer.addSublayer(circleLayer)
         }
         
         self.didStarUpAnimation = { [weak self] in
@@ -42,13 +52,11 @@ class DYBallView: UIView {
                 return
             }
             
-            for i in 3.stride(through: 0, by: -1) {
-                sSelf.circleMoveView = sSelf.viewWithTag(100 + i) as? CircleMoveView
-                sSelf.circleMoveView?.circleLayer.startAnimationUp(i,
-                                                                  duration: sSelf.moveUpDuration,
-                                                                  circleSize: sSelf.circleSize,
-                                                                  circleSpace: sSelf.circleSpace,
-                                                                  viewWidth: sSelf.circleMoveView!.bounds.size.width)
+            for layer in sSelf.circleLayers.reverse() {
+                layer.startAnimationUp(sSelf.moveUpDuration,
+                                                circleSize: sSelf.circleSize,
+                                                circleSpace: sSelf.circleSpace,
+                                                viewWidth: sSelf.bounds.size.width)
             }
         }
         self.endFloatAnimation = { [weak self] in
@@ -57,10 +65,19 @@ class DYBallView: UIView {
             }
             
             for i in 3.stride(through: 0, by: -1) {
-                sSelf.circleMoveView = sSelf.viewWithTag(100 + i) as? CircleMoveView
-                sSelf.circleMoveView!.circleLayer.stopFloatAnimation(i)
+                if let circleMoveView = sSelf.viewWithTag(100 + i) as? CircleMoveView {
+                    circleMoveView.circleLayer.stopFloatAnimation(i)
+                }
             }
         }
+    }
+    
+    func startAnimation() {
+        didStarUpAnimation!()
+    }
+    
+    func endAnimation() {
+        endFloatAnimation!()
     }
 
 }
@@ -75,7 +92,7 @@ class CircleMoveView: UIView {
         circleLayer = CircleLayer(
             size: circleSize,
             moveUpDist: moveUpDist,
-            superViewFrame: self.frame,
+            superViewFrame: frame,
             color: color
         )
         self.layer.addSublayer(circleLayer)
@@ -93,7 +110,7 @@ class CircleLayer :CAShapeLayer,CAAnimationDelegate {
     var moveUpDist: CGFloat!
     var didEndAnimation: (()->())?
     
-    var layerTag: Int?
+    var layerTag: Int = 0
     
     init(size:CGFloat, moveUpDist:CGFloat, superViewFrame:CGRect, color:UIColor) {
         self.moveUpDist = moveUpDist
@@ -102,7 +119,7 @@ class CircleLayer :CAShapeLayer,CAAnimationDelegate {
         
         let radius:CGFloat = size / 2
         self.frame = selfFrame
-        let center = CGPoint(x: superViewFrame.size.width / 2, y: superViewFrame.size.height/2)
+        let center = CGPoint(x: superViewFrame.size.width / 2, y: superViewFrame.size.height)
         let startAngle = 0 - M_PI_2
         let endAngle = M_PI * 2 - M_PI_2
         let clockwise: Bool = true
@@ -117,9 +134,8 @@ class CircleLayer :CAShapeLayer,CAAnimationDelegate {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func startAnimationUp(ballTag: Int, duration:NSTimeInterval, circleSize:CGFloat, circleSpace:CGFloat, viewWidth: CGFloat) {
-        layerTag = ballTag
-        let distance_left = (circleSize + circleSpace) * (1.5 - CGFloat(ballTag))
+    func startAnimationUp(duration:NSTimeInterval, circleSize:CGFloat, circleSpace:CGFloat, viewWidth: CGFloat) {
+        let distance_left = (circleSize + circleSpace) * (1.5 - CGFloat(layerTag))
         self.moveUp(duration, up: moveUpDist, left: distance_left, viewWidth: viewWidth)
     }
     
@@ -128,13 +144,12 @@ class CircleLayer :CAShapeLayer,CAAnimationDelegate {
     }
     
     func moveUp(duration:NSTimeInterval, up: CGFloat,left: CGFloat, viewWidth: CGFloat) {
-        
         self.hidden = false
         let move = CAKeyframeAnimation(keyPath: "position")
         let angle_1 = atan(Double(abs(left)) / Double(up))
         let angle_2 = M_PI -  angle_1 * 2
         let radii: Double = pow((pow(Double(left), 2)) + pow(Double(up), 2), 1 / 2) / (cos(angle_1) * 2)
-        let centerPoint: CGPoint = CGPoint(x: viewWidth/2 - left, y: CGFloat(radii) - up)
+        let centerPoint: CGPoint = CGPoint(x: viewWidth/2 - left, y: CGFloat(radii))
         var endAngle: CGFloat = CGFloat(3 * M_PI_2)
         var startAngle: CGFloat = CGFloat(3 / 2 * M_PI - angle_2)
         var bezierPath = UIBezierPath()
@@ -146,7 +161,7 @@ class CircleLayer :CAShapeLayer,CAAnimationDelegate {
             endAngle = CGFloat(3 * M_PI_2)
         }
         
-        bezierPath = UIBezierPath.init(arcCenter: centerPoint, radius: CGFloat(radii), startAngle: startAngle , endAngle: endAngle, clockwise: clockwise)
+        bezierPath = UIBezierPath(arcCenter: centerPoint, radius: CGFloat(radii), startAngle: startAngle , endAngle: endAngle, clockwise: clockwise)
         move.path = bezierPath.CGPath
         move.duration = duration
         move.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
@@ -177,7 +192,7 @@ class CircleLayer :CAShapeLayer,CAAnimationDelegate {
         
         let animation:CAKeyframeAnimation = anim as! CAKeyframeAnimation
         if animation.keyPath == "position" {
-            var timeDelay : Double = Double(UInt64(layerTag!) * NSEC_PER_SEC)
+            var timeDelay : Double = Double(UInt64(layerTag) * NSEC_PER_SEC)
             timeDelay *= 0.2;
             
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(timeDelay)), dispatch_get_main_queue(), { () -> Void in

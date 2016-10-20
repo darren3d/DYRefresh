@@ -15,6 +15,9 @@ class DYRefreshHeader: DYRefreshComponent {
         didSet {
             let newState = state
             let oldState = oldValue
+            if oldState == newState {
+                return
+            }
             
             if newState == DYRefreshState.Idle {
                 if oldState != DYRefreshState.Refreshing {

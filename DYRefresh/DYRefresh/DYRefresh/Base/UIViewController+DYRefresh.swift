@@ -20,7 +20,7 @@ extension UIViewController {
     }
     
     func dy_setupHeader(scrollView : UIScrollView) {
-        let header = DYRefreshHeader.header(CGRect(x: 0, y: 0, width: scrollView.frame.size.width, height: 60)) { [weak self] in
+        let header = DYRefreshBallHeader.header(CGRect(x: 0, y: 0, width: scrollView.frame.size.width, height: 60)) { [weak self] in
             self?.dy_updateData()
         }
         header.scrollView = scrollView

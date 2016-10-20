@@ -11,19 +11,28 @@ import UIKit
 class DYWaveView: UIView {
     lazy var waveLayer:CAShapeLayer = {
         let layer = CAShapeLayer(layer: self.layer)
+        layer.lineWidth = 0
         self.layer.addSublayer(layer)
         return layer
     }()
-    var bounceDuration:CFTimeInterval!
+    var bounceDuration:CFTimeInterval = 0.2
     var didEndPull: (()->())?
     
-    init(frame:CGRect,bounceDuration:CFTimeInterval = 0.2,color:UIColor) {
+    var waveColor: UIColor? {
+        get {
+            if let cgColor = self.waveLayer.fillColor {
+                return UIColor(CGColor: cgColor)
+            }
+            return nil
+        }
+        set {
+            self.waveLayer.strokeColor = newValue?.CGColor
+            self.waveLayer.fillColor = newValue?.CGColor
+        }
+    }
+    
+    override init(frame:CGRect) {
         super.init(frame:frame)
-        self.bounceDuration = bounceDuration
-        
-        self.waveLayer.lineWidth = 0
-        self.waveLayer.strokeColor = color.CGColor
-        self.waveLayer.fillColor = color.CGColor
     }
     
     func wave(y:CGFloat) {
@@ -60,7 +69,7 @@ class DYWaveView: UIView {
         print("height:\(height)    y: \(-bendDist)")
         
         let bottomLeftPoint = CGPoint(x: 0, y: height)
-        let topMidPoint = CGPoint(x: width / 2,  y: -bendDist)
+        let topMidPoint = CGPoint(x: width / 2,  y: height-bendDist)
         let bottomRightPoint = CGPoint(x: width, y: height)
         
         let bezierPath = UIBezierPath()
@@ -73,9 +82,20 @@ class DYWaveView: UIView {
     func didRelease(bendDist: CGFloat) {
         self.boundAnimation(bendDist)
         didEndPull?()
+        
+        var duration = bounceDuration
+        if duration <= 0 {
+            duration = 0.1
+        }
+        duration *= CFTimeInterval(NSEC_PER_SEC)
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(duration)), dispatch_get_main_queue(), { () -> Void in
+            self.endAnimation()
+        })
     }
     
     func endAnimation() {
         self.waveLayer.removeAllAnimations()
+        self.wave(0)
     }
 }
