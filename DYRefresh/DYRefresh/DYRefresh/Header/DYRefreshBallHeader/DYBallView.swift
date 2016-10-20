@@ -9,7 +9,7 @@
 import UIKit
 
 class DYBallView: UIView {
-    var moveUpDuration: Double = 0.7
+    var moveUpDuration: Double = 0.35
     var circleSize: CGFloat = 20
     var circleSpace: CGFloat = 8.0
     var circleColor = UIColor.lightGrayColor()
@@ -74,6 +74,10 @@ class CircleLayer :CAShapeLayer,CAAnimationDelegate {
     var moveUpDist: CGFloat!
     var layerTag: Int = 0
     var didEndAnimation: (()->())?
+    
+    override init(layer: AnyObject) {
+        super.init(layer: layer)
+    }
     
     init(layer: AnyObject, size:CGFloat, moveUpDist:CGFloat, superViewFrame:CGRect, color:UIColor) {
         super.init(layer: layer)
@@ -182,8 +186,8 @@ class CircleLayer :CAShapeLayer,CAAnimationDelegate {
         self.hidden = true
         self.removeAllAnimations()
         
-        //        let center = CGPoint(x: self.frame.size.width / 2, y: self.frame.size.height)
-        //        self.position = center
+        let center = CGPoint(x: self.frame.size.width / 2, y: self.frame.size.height)
+        self.position = center
     }
     
     func animationDidStop(anim: CAAnimation, finished flag: Bool) {
@@ -191,7 +195,7 @@ class CircleLayer :CAShapeLayer,CAAnimationDelegate {
         let animation:CAKeyframeAnimation = anim as! CAKeyframeAnimation
         if animation.keyPath == "position" {
             var timeDelay : Double = Double(UInt64(layerTag) * NSEC_PER_SEC)
-            timeDelay *= 0.2;
+            timeDelay *= 0.1;
             
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(timeDelay)), dispatch_get_main_queue(), { () -> Void in
                 self.floatUpOrDown()
