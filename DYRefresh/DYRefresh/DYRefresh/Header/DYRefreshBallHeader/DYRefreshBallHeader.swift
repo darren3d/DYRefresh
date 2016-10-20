@@ -34,6 +34,7 @@ class DYRefreshBallHeader: DYRefreshHeader {
                 break
 //                waveView.alpha = 0
             case DYRefreshState.Pulling:
+                ballView.resetAnimation()
 //                waveView.alpha = 1
                 break
             case DYRefreshState.Refreshing:
@@ -53,6 +54,10 @@ class DYRefreshBallHeader: DYRefreshHeader {
             percent = max(percent, 0.0)
             let offset = self.pullingPercent * self.bounds.size.height
             wave(offset)
+            
+            if percent >= 0.01 && percent <= 0.99 {
+                ballView.resetAnimation()
+            }
         }
     }
     
@@ -90,9 +95,9 @@ class DYRefreshBallHeader: DYRefreshHeader {
         ballView.frame = self.bounds
     }
     
-    func endAnimation(complition:(()->())? = nil) {
-        ballView.endAnimation()
-        complition?()
+    override func endRefreshing() {
+//        ballView.stopAnimation()
+        super.endRefreshing()
     }
     
     func wave(y: CGFloat) {

@@ -20,8 +20,8 @@ class ViewController: UITableViewController {
     }
     
     override func viewDidAppear(animated: Bool) {
-//        self.tableView.dy_header?.beginRefreshing()
-        dy_updateData()
+        self.tableView.dy_header?.beginRefreshing()
+//        dy_updateData()
     }
     
     override func dy_updateData() {
