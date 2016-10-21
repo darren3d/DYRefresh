@@ -46,9 +46,16 @@ class DYRefreshFooter: DYRefreshComponent {
         }
     }
     
-    class func footer(frame:CGRect, block:DYRefreshComponentBlock? = nil) -> DYRefreshFooter {
+    class func footer(frame:CGRect, block:DYRefreshComponentBlock) -> DYRefreshFooter {
         let footer = DYRefreshFooter(frame: frame)
         footer.refreshingBlock = block
+        return footer
+    }
+    
+    class func footer(frame:CGRect, target:AnyObject, selector:Selector) -> DYRefreshFooter {
+        let footer = DYRefreshFooter(frame: frame)
+        footer.target = target
+        footer.selector = selector
         return footer
     }
     

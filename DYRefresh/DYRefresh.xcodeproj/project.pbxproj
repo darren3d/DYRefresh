@@ -20,7 +20,6 @@
 		63CFB5D41DB7C38E00FB5B60 /* DYRefreshFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CFB5CF1DB7C38E00FB5B60 /* DYRefreshFooter.swift */; };
 		63CFB5D51DB7C38E00FB5B60 /* DYRefreshHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CFB5D01DB7C38E00FB5B60 /* DYRefreshHeader.swift */; };
 		63CFB5D61DB7C38E00FB5B60 /* UIScrollView+DYRefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CFB5D11DB7C38E00FB5B60 /* UIScrollView+DYRefresh.swift */; };
-		63CFB5D71DB7C38E00FB5B60 /* UIViewController+DYRefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CFB5D21DB7C38E00FB5B60 /* UIViewController+DYRefresh.swift */; };
 		63CFB5DD1DB7C40600FB5B60 /* DYRefreshBallHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CFB5DC1DB7C40600FB5B60 /* DYRefreshBallHeader.swift */; };
 		63CFB5DF1DB7CFD700FB5B60 /* DYBallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CFB5DE1DB7CFD700FB5B60 /* DYBallView.swift */; };
 /* End PBXBuildFile section */
@@ -62,7 +61,6 @@
 		63CFB5CF1DB7C38E00FB5B60 /* DYRefreshFooter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DYRefreshFooter.swift; sourceTree = "<group>"; };
 		63CFB5D01DB7C38E00FB5B60 /* DYRefreshHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DYRefreshHeader.swift; sourceTree = "<group>"; };
 		63CFB5D11DB7C38E00FB5B60 /* UIScrollView+DYRefresh.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIScrollView+DYRefresh.swift"; sourceTree = "<group>"; };
-		63CFB5D21DB7C38E00FB5B60 /* UIViewController+DYRefresh.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+DYRefresh.swift"; sourceTree = "<group>"; };
 		63CFB5DC1DB7C40600FB5B60 /* DYRefreshBallHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DYRefreshBallHeader.swift; sourceTree = "<group>"; };
 		63CFB5DE1DB7CFD700FB5B60 /* DYBallView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DYBallView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -177,7 +175,6 @@
 				63CFB5CF1DB7C38E00FB5B60 /* DYRefreshFooter.swift */,
 				63CFB5D01DB7C38E00FB5B60 /* DYRefreshHeader.swift */,
 				63CFB5D11DB7C38E00FB5B60 /* UIScrollView+DYRefresh.swift */,
-				63CFB5D21DB7C38E00FB5B60 /* UIViewController+DYRefresh.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -335,7 +332,6 @@
 				63CFB5DF1DB7CFD700FB5B60 /* DYBallView.swift in Sources */,
 				637666F11DB7E896001E36E1 /* DYWaveView.swift in Sources */,
 				63CFB5D51DB7C38E00FB5B60 /* DYRefreshHeader.swift in Sources */,
-				63CFB5D71DB7C38E00FB5B60 /* UIViewController+DYRefresh.swift in Sources */,
 				63CFB5D61DB7C38E00FB5B60 /* UIScrollView+DYRefresh.swift in Sources */,
 				63CFB5DD1DB7C40600FB5B60 /* DYRefreshBallHeader.swift in Sources */,
 				63738D751DB97A7C00597727 /* DYRefreshBallFooter.swift in Sources */,

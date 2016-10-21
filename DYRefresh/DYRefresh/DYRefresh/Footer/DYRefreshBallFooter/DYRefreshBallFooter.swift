@@ -63,9 +63,20 @@ class DYRefreshBallFooter: DYRefreshFooter {
         }
     }
     
-    override class func footer(frame:CGRect, block:DYRefreshComponentBlock? = nil) -> DYRefreshBallFooter {
+    override class func footer(frame:CGRect, block:DYRefreshComponentBlock) -> DYRefreshBallFooter {
         let footer = DYRefreshBallFooter(frame: frame)
         footer.refreshingBlock = block
+        footer.setTitle(" ", forState: DYRefreshState.Idle)
+        footer.setTitle(" ", forState: DYRefreshState.Pulling)
+        footer.setTitle(" ", forState: DYRefreshState.Refreshing)
+        footer.setTitle("没有更多了", forState: DYRefreshState.NoMoreData)
+        return footer
+    }
+    
+    override class func footer(frame:CGRect, target:AnyObject, selector:Selector) -> DYRefreshFooter {
+        let footer = DYRefreshBallFooter(frame: frame)
+        footer.target = target
+        footer.selector = selector
         footer.setTitle(" ", forState: DYRefreshState.Idle)
         footer.setTitle(" ", forState: DYRefreshState.Pulling)
         footer.setTitle(" ", forState: DYRefreshState.Refreshing)

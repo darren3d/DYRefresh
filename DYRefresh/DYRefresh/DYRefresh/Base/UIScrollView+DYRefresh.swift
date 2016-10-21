@@ -64,6 +64,26 @@ extension UIScrollView {
                                    policy: objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
     }
+    
+    func dy_setupHeader(target target:AnyObject, selector:Selector, height: CGFloat = 60) {
+        var frame = self.bounds
+        frame.size.height = height
+        let header = DYRefreshBallHeader.header(frame, target: target, selector: selector)
+        header.scrollView = self
+        header.backgroundColor = self.backgroundColor
+        
+        self.dy_header = header
+    }
+    
+    func dy_setupFooter(target target:AnyObject, selector:Selector, height: CGFloat = 60) {
+        var frame = self.bounds
+        frame.size.height = height
+        let footer = DYRefreshBallFooter.footer(frame, target: target, selector: selector)
+        footer.scrollView = self
+        footer.backgroundColor = self.backgroundColor
+        
+        self.dy_footer = footer
+    }
 }
 
 

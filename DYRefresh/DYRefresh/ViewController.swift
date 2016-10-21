@@ -16,7 +16,8 @@ class ViewController: UITableViewController {
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
         self.tableView.registerClass(UITableViewCell.self,  forCellReuseIdentifier:"cell")
         
-        dy_setupRefresh(true, setFooter: true, scrollView: self.tableView)
+        self.tableView.dy_setupHeader(target: self, selector: #selector(dy_updateData))
+        self.tableView.dy_setupFooter(target: self, selector: #selector(dy_loadMoreData))
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -24,7 +25,7 @@ class ViewController: UITableViewController {
 //        dy_updateData()
     }
     
-    override func dy_updateData() {
+    func dy_updateData() {
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (Int64)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), { () -> Void in
             var data = self.data
             for i in 0 ..< 20 {
@@ -38,7 +39,7 @@ class ViewController: UITableViewController {
         })
     }
     
-    override func dy_loadMoreData() {
+    func dy_loadMoreData() {
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (Int64)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), { () -> Void in
             var data = self.data
             for i in 100 ..< 120 {

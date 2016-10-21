@@ -49,9 +49,15 @@ class DYRefreshHeader: DYRefreshComponent {
         }
     }
     
-    class func header(frame:CGRect, block:DYRefreshComponentBlock? = nil) -> DYRefreshHeader {
+    class func header(frame:CGRect, block:DYRefreshComponentBlock) -> DYRefreshHeader {
         let header = DYRefreshHeader(frame: frame)
         header.refreshingBlock = block
+        return header
+    }
+    class func header(frame:CGRect, target:AnyObject, selector:Selector) -> DYRefreshHeader {
+        let header = DYRefreshHeader(frame: frame)
+        header.target = target
+        header.selector = selector
         return header
     }
     
