@@ -68,6 +68,17 @@ class DYBallView: UIView {
             layer.resetAnimation()
         }
     }
+    
+    func setBallColors(colors: [UIColor]) {
+        let countColor = colors.count
+        let countLayer = circleLayers.count
+        let count = min(countColor, countLayer)
+        for i in 0 ..< count {
+            let layer = circleLayers[i]
+            layer.fillColor = colors[i].CGColor
+            layer.strokeColor = colors[i].CGColor
+        }
+    }
 }
 
 class CircleLayer :CAShapeLayer,CAAnimationDelegate {
@@ -112,34 +123,6 @@ class CircleLayer :CAShapeLayer,CAAnimationDelegate {
     }
     
     func moveUp(duration:NSTimeInterval, up: CGFloat,left: CGFloat, viewWidth: CGFloat) {
-        self.hidden = false
-        let move = CAKeyframeAnimation(keyPath: "position")
-        let angle_1 = atan(Double(abs(left)) / Double(up))
-        let angle_2 = M_PI -  angle_1 * 2
-        let radii: Double = pow((pow(Double(left), 2)) + pow(Double(up), 2), 1 / 2) / (cos(angle_1) * 2)
-        let centerPoint: CGPoint = CGPoint(x: viewWidth/2 - left, y: CGFloat(radii))
-        var endAngle: CGFloat = CGFloat(3 * M_PI_2)
-        var startAngle: CGFloat = CGFloat(3 / 2 * M_PI - angle_2)
-        var bezierPath = UIBezierPath()
-        var clockwise:Bool = true
-        
-        if left > 0 {
-            clockwise = false
-            startAngle =  CGFloat(3 / 2 * M_PI + angle_2)
-            endAngle = CGFloat(3 * M_PI_2)
-        }
-        
-        bezierPath = UIBezierPath(arcCenter: centerPoint, radius: CGFloat(radii), startAngle: startAngle , endAngle: endAngle, clockwise: clockwise)
-        move.path = bezierPath.CGPath
-        move.duration = duration
-        move.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
-        move.fillMode = kCAFillModeForwards
-        move.removedOnCompletion = false
-        move.delegate = self
-        self.addAnimation(move, forKey: move.keyPath)
-    }
-    
-    func moveDown(duration:NSTimeInterval, up: CGFloat,left: CGFloat, viewWidth: CGFloat) {
         self.hidden = false
         let move = CAKeyframeAnimation(keyPath: "position")
         let angle_1 = atan(Double(abs(left)) / Double(up))

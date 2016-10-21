@@ -24,7 +24,7 @@ extension UIViewController {
             self?.dy_updateData()
         }
         header.scrollView = scrollView
-        header.backgroundColor = UIColor.blueColor()
+        header.backgroundColor = scrollView.backgroundColor
         
         scrollView.dy_header = header
     }

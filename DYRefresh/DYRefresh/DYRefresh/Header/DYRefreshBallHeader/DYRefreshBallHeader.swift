@@ -9,8 +9,8 @@
 import UIKit
 
 class DYRefreshBallHeader: DYRefreshHeader {
-    var ballView:DYBallView!
-    var waveView:DYWaveView!
+    private var ballView:DYBallView!
+    private var waveView:DYWaveView!
     
     var waveColor: UIColor? {
         get {
@@ -64,7 +64,8 @@ class DYRefreshBallHeader: DYRefreshHeader {
     override class func header(frame:CGRect, block:DYRefreshComponentBlock? = nil) -> DYRefreshHeader {
         let header = DYRefreshBallHeader(frame: frame)
         header.refreshingBlock = block
-        header.waveColor = UIColor.lightGrayColor()
+        header.waveColor = UIColor.whiteColor()
+        header.setBallColors([UIColor.brownColor(), UIColor.cyanColor(), UIColor.magentaColor(), UIColor.orangeColor()])
         return header
     }
     
@@ -102,6 +103,10 @@ class DYRefreshBallHeader: DYRefreshHeader {
     
     override func scrollViewContentOffsetDidChange(change: [String : AnyObject]?) {
         super.scrollViewContentOffsetDidChange(change)
+    }
+    
+    func setBallColors(colors: [UIColor]) {
+        ballView.setBallColors(colors)
     }
     
     func wave(y: CGFloat) {
