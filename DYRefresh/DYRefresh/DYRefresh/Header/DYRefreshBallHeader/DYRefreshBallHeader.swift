@@ -100,6 +100,10 @@ class DYRefreshBallHeader: DYRefreshHeader {
         super.endRefreshing()
     }
     
+    override func scrollViewContentOffsetDidChange(change: [String : AnyObject]?) {
+        super.scrollViewContentOffsetDidChange(change)
+    }
+    
     func wave(y: CGFloat) {
         waveView.wave(y)
     }

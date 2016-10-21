@@ -16,12 +16,12 @@ class ViewController: UITableViewController {
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
         self.tableView.registerClass(UITableViewCell.self,  forCellReuseIdentifier:"cell")
         
-        dy_setupRefresh(false, setFooter: true, scrollView: self.tableView)
+        dy_setupRefresh(true, setFooter: true, scrollView: self.tableView)
     }
     
     override func viewDidAppear(animated: Bool) {
         self.tableView.dy_header?.beginRefreshing()
-        dy_updateData()
+//        dy_updateData()
     }
     
     override func dy_updateData() {

@@ -47,7 +47,7 @@ extension UIScrollView {
             return footer
         }
         set {
-            let oldFooter = self.dy_header
+            let oldFooter = self.dy_footer
             let newFooter : DYRefreshFooter? = newValue
             if newFooter == oldFooter {
                 return
