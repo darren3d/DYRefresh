@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6336F4111DBA202E009B1A70 /* NSObject+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6336F4101DBA202E009B1A70 /* NSObject+Utility.swift */; };
 		636E9AA51D3BE36B00285FA1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636E9AA41D3BE36B00285FA1 /* AppDelegate.swift */; };
 		636E9AA71D3BE36B00285FA1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636E9AA61D3BE36B00285FA1 /* ViewController.swift */; };
 		636E9AAA1D3BE36B00285FA1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 636E9AA81D3BE36B00285FA1 /* Main.storyboard */; };
@@ -42,6 +43,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6336F4101DBA202E009B1A70 /* NSObject+Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSObject+Utility.swift"; sourceTree = "<group>"; };
 		636E9AA11D3BE36B00285FA1 /* DYRefresh.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DYRefresh.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		636E9AA41D3BE36B00285FA1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		636E9AA61D3BE36B00285FA1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -175,6 +177,7 @@
 				63CFB5CF1DB7C38E00FB5B60 /* DYRefreshFooter.swift */,
 				63CFB5D01DB7C38E00FB5B60 /* DYRefreshHeader.swift */,
 				63CFB5D11DB7C38E00FB5B60 /* UIScrollView+DYRefresh.swift */,
+				6336F4101DBA202E009B1A70 /* NSObject+Utility.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -336,6 +339,7 @@
 				63CFB5DD1DB7C40600FB5B60 /* DYRefreshBallHeader.swift in Sources */,
 				63738D751DB97A7C00597727 /* DYRefreshBallFooter.swift in Sources */,
 				63CFB5D31DB7C38E00FB5B60 /* DYRefreshComponent.swift in Sources */,
+				6336F4111DBA202E009B1A70 /* NSObject+Utility.swift in Sources */,
 				636E9AA51D3BE36B00285FA1 /* AppDelegate.swift in Sources */,
 				63CFB5D41DB7C38E00FB5B60 /* DYRefreshFooter.swift in Sources */,
 			);
