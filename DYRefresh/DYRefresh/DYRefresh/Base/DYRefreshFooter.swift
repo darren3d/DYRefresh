@@ -17,7 +17,7 @@ class DYRefreshFooter: DYRefreshComponent {
             
             if newState == DYRefreshState.Refreshing {
                 dispatch_async(dispatch_get_main_queue()){
-                    self.refreshingBlock?();
+                    self.performRefresh()
                 }
             } else if newState == DYRefreshState.NoMoreData || newState == DYRefreshState.Idle {
                 if oldState == DYRefreshState.Refreshing {
@@ -102,8 +102,13 @@ class DYRefreshFooter: DYRefreshComponent {
             return
         }
         
-        let oldOffset = change!["old"] as! CGPoint
-        let newOffset = change!["new"] as! CGPoint
+        guard let oldOffset = (change?["old"])?.CGPointValue()  else {
+            return
+        }
+        
+        guard let newOffset = (change?["new"])?.CGPointValue()  else {
+            return
+        }
         if newOffset.y <= oldOffset.y {
             return
         }

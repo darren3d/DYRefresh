@@ -16,12 +16,12 @@ class ViewController: UITableViewController {
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
         self.tableView.registerClass(UITableViewCell.self,  forCellReuseIdentifier:"cell")
         
-        dy_setupRefresh(true, setFooter: false, scrollView: self.tableView)
+        dy_setupRefresh(false, setFooter: true, scrollView: self.tableView)
     }
     
     override func viewDidAppear(animated: Bool) {
         self.tableView.dy_header?.beginRefreshing()
-//        dy_updateData()
+        dy_updateData()
     }
     
     override func dy_updateData() {
@@ -39,7 +39,17 @@ class ViewController: UITableViewController {
     }
     
     override func dy_loadMoreData() {
-        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (Int64)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), { () -> Void in
+            var data = self.data
+            for i in 100 ..< 120 {
+                data.append("row: \(i)")
+            }
+            
+            self.data = data
+            self.tableView.reloadData()
+            
+            self.tableView.dy_footer?.endRefreshingWithNoMoreData()
+        })
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

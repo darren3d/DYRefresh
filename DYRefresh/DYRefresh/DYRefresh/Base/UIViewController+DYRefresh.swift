@@ -30,9 +30,12 @@ extension UIViewController {
     }
     
     func dy_setupFooter(scrollView : UIScrollView) {
-        scrollView.dy_footer = DYRefreshFooter.footer(CGRect(x: 0, y: 0, width: scrollView.frame.size.width, height: 60)) { [weak self] in
+        let footer = DYRefreshBallFooter.footer(CGRect(x: 0, y: 0, width: scrollView.frame.size.width, height: 60)) { [weak self] in
             self?.dy_loadMoreData()
         }
+        footer.scrollView = scrollView
+        
+        scrollView.dy_footer = footer
     }
     
     func dy_updateData() {

@@ -168,6 +168,7 @@ class CircleLayer :CAShapeLayer,CAAnimationDelegate {
     }
     
     func floatUpOrDown() {
+        self.removeAnimationForKey("position.y")
         let move = CAKeyframeAnimation(keyPath: "position.y")
         move.values = [0,1,2,3,4,5,4,3,2,1,0,-1,-2,-3,-4,-5,-4,-3,-2,-1,0]
         move.duration = 1

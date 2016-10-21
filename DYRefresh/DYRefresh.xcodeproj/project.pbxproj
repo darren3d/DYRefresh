@@ -14,6 +14,7 @@
 		636E9AAF1D3BE36B00285FA1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 636E9AAD1D3BE36B00285FA1 /* LaunchScreen.storyboard */; };
 		636E9ABA1D3BE36B00285FA1 /* DYRefreshTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636E9AB91D3BE36B00285FA1 /* DYRefreshTests.swift */; };
 		636E9AC51D3BE36B00285FA1 /* DYRefreshUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636E9AC41D3BE36B00285FA1 /* DYRefreshUITests.swift */; };
+		63738D751DB97A7C00597727 /* DYRefreshBallFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63738D741DB97A7C00597727 /* DYRefreshBallFooter.swift */; };
 		637666F11DB7E896001E36E1 /* DYWaveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637666F01DB7E896001E36E1 /* DYWaveView.swift */; };
 		63CFB5D31DB7C38E00FB5B60 /* DYRefreshComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CFB5CE1DB7C38E00FB5B60 /* DYRefreshComponent.swift */; };
 		63CFB5D41DB7C38E00FB5B60 /* DYRefreshFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CFB5CF1DB7C38E00FB5B60 /* DYRefreshFooter.swift */; };
@@ -55,6 +56,7 @@
 		636E9AC01D3BE36B00285FA1 /* DYRefreshUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DYRefreshUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		636E9AC41D3BE36B00285FA1 /* DYRefreshUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DYRefreshUITests.swift; sourceTree = "<group>"; };
 		636E9AC61D3BE36B00285FA1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		63738D741DB97A7C00597727 /* DYRefreshBallFooter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DYRefreshBallFooter.swift; sourceTree = "<group>"; };
 		637666F01DB7E896001E36E1 /* DYWaveView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DYWaveView.swift; sourceTree = "<group>"; };
 		63CFB5CE1DB7C38E00FB5B60 /* DYRefreshComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DYRefreshComponent.swift; sourceTree = "<group>"; };
 		63CFB5CF1DB7C38E00FB5B60 /* DYRefreshFooter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DYRefreshFooter.swift; sourceTree = "<group>"; };
@@ -145,10 +147,27 @@
 		636E9AD21D3BE7AA00285FA1 /* DYRefresh */ = {
 			isa = PBXGroup;
 			children = (
+				63738D721DB97A5800597727 /* Footer */,
 				63CFB5D81DB7C3A900FB5B60 /* Header */,
 				63CFB5CD1DB7C38E00FB5B60 /* Base */,
 			);
 			path = DYRefresh;
+			sourceTree = "<group>";
+		};
+		63738D721DB97A5800597727 /* Footer */ = {
+			isa = PBXGroup;
+			children = (
+				63738D731DB97A7C00597727 /* DYRefreshBallFooter */,
+			);
+			path = Footer;
+			sourceTree = "<group>";
+		};
+		63738D731DB97A7C00597727 /* DYRefreshBallFooter */ = {
+			isa = PBXGroup;
+			children = (
+				63738D741DB97A7C00597727 /* DYRefreshBallFooter.swift */,
+			);
+			path = DYRefreshBallFooter;
 			sourceTree = "<group>";
 		};
 		63CFB5CD1DB7C38E00FB5B60 /* Base */ = {
@@ -319,6 +338,7 @@
 				63CFB5D71DB7C38E00FB5B60 /* UIViewController+DYRefresh.swift in Sources */,
 				63CFB5D61DB7C38E00FB5B60 /* UIScrollView+DYRefresh.swift in Sources */,
 				63CFB5DD1DB7C40600FB5B60 /* DYRefreshBallHeader.swift in Sources */,
+				63738D751DB97A7C00597727 /* DYRefreshBallFooter.swift in Sources */,
 				63CFB5D31DB7C38E00FB5B60 /* DYRefreshComponent.swift in Sources */,
 				636E9AA51D3BE36B00285FA1 /* AppDelegate.swift in Sources */,
 				63CFB5D41DB7C38E00FB5B60 /* DYRefreshFooter.swift in Sources */,

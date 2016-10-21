@@ -10,7 +10,7 @@ import UIKit
 
 public typealias DYRefreshComponentBlock = @convention(block) () -> Void
 
-enum DYRefreshState : Int16 {
+enum DYRefreshState : Int {
     case Init = 0
     case Idle = 1
     case Pulling = 2
@@ -57,7 +57,8 @@ class DYRefreshComponent: UIView {
     }
     
     var refreshingBlock : DYRefreshComponentBlock?
-    
+    weak var target : AnyObject?
+    var selector : Selector?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -102,7 +103,7 @@ class DYRefreshComponent: UIView {
             return
         }
         
-        let options = NSKeyValueObservingOptions.New//|NSKeyValueObservingOptions.Old;
+        let options = NSKeyValueObservingOptions.New.union(NSKeyValueObservingOptions.Old)//|NSKeyValueObservingOptions.Old;
         scrollView.addObserver(self,
                                forKeyPath: "contentOffset",
                                options: options,
@@ -183,6 +184,16 @@ class DYRefreshComponent: UIView {
                 self.setNeedsLayout()
                 self.setNeedsDisplay()
             }
+        }
+    }
+    
+    func performRefresh() {
+        if let refreshingBlock = self.refreshingBlock {
+            refreshingBlock()
+        }
+        
+        if let selector = self.selector {
+            self.target?.performSelector(selector)
         }
     }
     

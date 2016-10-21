@@ -42,10 +42,7 @@ class DYRefreshHeader: DYRefreshComponent {
                                 scrollView.setContentOffset(CGPointMake(0, -top), animated: false)
                             }
                         }, completion: { finished in
-                            guard let refreshingBlock = self.refreshingBlock else {
-                                return
-                            }
-                            refreshingBlock()
+                            self.performRefresh()
                     })
                 }
             }
